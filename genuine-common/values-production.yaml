@@ -1,3 +1,5 @@
+envAlias: prod
+
 genuine-api:
   ingress:
     enabled: true

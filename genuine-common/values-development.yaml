@@ -1,3 +1,5 @@
+envAlias: dev
+
 genuine-api:
   ingress:
     enabled: true
