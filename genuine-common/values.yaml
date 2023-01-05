@@ -56,12 +56,12 @@ genuine-worker:
     volumes:
       - name: secret
         secret:
-          secretName: basic-authe-secret
+          secretName: worker-secret
           optional: false
 
     volumeMounts:
       - name: secret
-        mountPath: /secrets
+        mountPath: /app/Properties
 
     env:
       - name: DbSetting__ConnectionString
