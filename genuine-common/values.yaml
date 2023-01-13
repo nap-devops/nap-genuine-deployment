@@ -59,9 +59,20 @@ genuine-worker:
           secretName: worker-secret
           optional: false
 
+      - name: gcp-sa
+        secret:
+          secretName: gcp-sa
+          items:
+          - key: gcp-sa-file
+            path: gcp-sa-file.json
+
     volumeMounts:
       - name: secret
         mountPath: /app/Properties
+
+      - name: gcp-sa
+        mountPath: "/secrets"
+        readOnly: true
 
     env:
       - name: DbSetting__ConnectionString
@@ -70,6 +81,9 @@ genuine-worker:
             name: mongodb-secret
             key: MONGODB_URL
             optional: false
+
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secrets/gcp-sa-file.json
 
   ingress:
     enabled: false
