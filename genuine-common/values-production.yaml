@@ -46,5 +46,5 @@ genuine-api:
         value: "nap-devops-prod"
 
       - name: Pubsub__Topic
-        value: "genuine-dev"
+        value: "genuine-prod"
         
