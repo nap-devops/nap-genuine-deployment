@@ -1,0 +1,8 @@
+genuine-api:
+  pods:
+    image:
+      tag: "develop-ac45fd4"
+genuine-worker:
+  pods:
+    image:
+      tag: "develop-ac45fd4"
