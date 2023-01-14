@@ -1,8 +1,8 @@
 genuine-api:
   pods:
     image:
-      tag: "v1.0.9"
+      tag: "v1.0.10"
 genuine-worker:
   pods:
     image:
-      tag: "v1.0.9"
+      tag: "v1.0.10"
