@@ -10,3 +10,41 @@ genuine-api:
 
     hosts:
       - api.genuine.napbiotec.io
+
+  pods:
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /service-account/gcp-sa-file.json
+    
+      - name: PORT
+        value: "8080"
+
+      - name: DbSetting__ConnectionString
+        valueFrom:
+          secretKeyRef:
+            name: mongodb-secret
+            key: MONGODB_URL
+            optional: false
+
+      - name: AssetRegistration__SymetricKey
+        valueFrom:
+          secretKeyRef:
+            name: redirect-secret
+            key: REDIRECT_KEY
+            optional: false
+
+      - name: BasicAuthen__File
+        value: "/secrets/credentials.txt"
+
+      - name: AuditLog__Host
+        value: "logstash-syslog.logstash-soc.svc.cluster.local"
+
+      - name: AuditLog__Port
+        value: "5140"
+
+      - name: Pubsub__ProjectId
+        value: "nap-devops-prod"
+
+      - name: Pubsub__Topic
+        value: "genuine-dev"
+        
