@@ -13,36 +13,20 @@ genuine-api:
           secretName: basic-authe-secret
           optional: false
 
+      - name: gcp-sa
+        secret:
+          secretName: gcp-sa
+          items:
+          - key: gcp-sa-file
+            path: gcp-sa-file.json
+
     volumeMounts:
       - name: secret
         mountPath: /secrets
 
-    env:
-      - name: PORT
-        value: "8080"
-
-      - name: DbSetting__ConnectionString
-        valueFrom:
-          secretKeyRef:
-            name: mongodb-secret
-            key: MONGODB_URL
-            optional: false
-
-      - name: AssetRegistration__SymetricKey
-        valueFrom:
-          secretKeyRef:
-            name: redirect-secret
-            key: REDIRECT_KEY
-            optional: false
-
-      - name: BasicAuthen__File
-        value: "/secrets/credentials.txt"
-
-      - name: AuditLog__Host
-        value: "logstash-syslog.logstash-soc.svc.cluster.local"
-
-      - name: AuditLog__Port
-        value: "5140"
+      - name: gcp-sa
+        mountPath: "/service-account"
+        readOnly: true
 
 genuine-worker:
   enabled: true
@@ -59,9 +43,20 @@ genuine-worker:
           secretName: worker-secret
           optional: false
 
+      - name: gcp-sa
+        secret:
+          secretName: gcp-sa
+          items:
+          - key: gcp-sa-file
+            path: gcp-sa-file.json
+
     volumeMounts:
       - name: secret
         mountPath: /app/Properties
+
+      - name: gcp-sa
+        mountPath: "/secrets"
+        readOnly: true
 
     env:
       - name: DbSetting__ConnectionString
@@ -70,6 +65,9 @@ genuine-worker:
             name: mongodb-secret
             key: MONGODB_URL
             optional: false
+
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /secrets/gcp-sa-file.json
 
   ingress:
     enabled: false
