@@ -1,0 +1,8 @@
+genuine-api:
+  pods:
+    image:
+      tag: "v1.0.9"
+genuine-worker:
+  pods:
+    image:
+      tag: "v1.0.9"
