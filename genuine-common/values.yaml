@@ -13,11 +13,25 @@ genuine-api:
           secretName: basic-authe-secret
           optional: false
 
+      - name: gcp-sa
+        secret:
+          secretName: gcp-sa
+          items:
+          - key: gcp-sa-file
+            path: gcp-sa-file.json
+
     volumeMounts:
       - name: secret
         mountPath: /secrets
 
+      - name: gcp-sa
+        mountPath: "/service-account"
+        readOnly: true
+
     env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /service-account/gcp-sa-file.json
+    
       - name: PORT
         value: "8080"
 
