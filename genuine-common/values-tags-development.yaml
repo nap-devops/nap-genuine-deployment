@@ -1,8 +1,8 @@
 genuine-api:
   pods:
     image:
-      tag: "develop-b397f9e"
+      tag: "develop-659ed2d"
 genuine-worker:
   pods:
     image:
-      tag: "develop-b397f9e"
+      tag: "develop-659ed2d"
