@@ -3,7 +3,7 @@ genuine-api:
   nameOverride: genuine
 
   pods:
-    replicas: "0"
+    replicas: 0
     controller: deployment
     image:
       name: gcr.io/its-artifact-commons/jenuine-api
@@ -34,7 +34,7 @@ genuine-worker:
   nameOverride: genuine-worker
 
   pods:
-    replicas: "0"
+    replicas: 0
     controller: deployment
     image:
       name: gcr.io/its-artifact-commons/jenuine-worker
