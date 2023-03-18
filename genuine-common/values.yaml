@@ -1,5 +1,5 @@
 genuine-api:
-  enabled: true
+  enabled: false
   nameOverride: genuine
 
   pods:
@@ -29,7 +29,7 @@ genuine-api:
         readOnly: true
 
 genuine-worker:
-  enabled: true
+  enabled: false
   nameOverride: genuine-worker
 
   pods:
