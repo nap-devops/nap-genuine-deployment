@@ -1,8 +1,9 @@
 genuine-api:
-  enabled: false
+  enabled: true
   nameOverride: genuine
 
   pods:
+    replicas: "0"
     controller: deployment
     image:
       name: gcr.io/its-artifact-commons/jenuine-api
@@ -29,10 +30,11 @@ genuine-api:
         readOnly: true
 
 genuine-worker:
-  enabled: false
+  enabled: true
   nameOverride: genuine-worker
 
   pods:
+    replicas: "0"
     controller: deployment
     image:
       name: gcr.io/its-artifact-commons/jenuine-worker
