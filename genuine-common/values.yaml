@@ -9,7 +9,7 @@ genuine-doc:
     controller: deployment
     image:
       name: nginx
-      tag: "1.14.2"
+      tag: "1.23.3"
     ports:
       - containerPort: 80
     additionalContainers:
