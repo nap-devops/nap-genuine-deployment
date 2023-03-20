@@ -42,6 +42,13 @@ genuine-doc:
 
   ingress:
     enabled: false
+  service:
+    enabled: true
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http
 
 genuine-api:
   enabled: true
