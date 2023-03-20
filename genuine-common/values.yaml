@@ -8,8 +8,21 @@ genuine-doc:
       type: Recreate
     controller: deployment
     image:
-      name: rclone/rclone
-      tag: "1.62.2"
+      name: nginx
+      tag: "1.14.2"
+    additionalContainers:
+      - name: rclone
+        image: rclone/rclone
+        tag: "1.62.2"
+        command: ["/bin/sh", "-c", "/scripts/run.bash"]
+        volumeMounts:
+          - name: config
+            mountPath: /config/rclone
+          - name: scripts
+            mountPath: /scripts
+            readOnly: true
+          - mountPath: "/data"
+            name: data
     volumes:
       - name: config
         secret:
@@ -23,14 +36,11 @@ genuine-doc:
         persistentVolumeClaim:
           claimName: rclone-data
     volumeMounts:
-      - name: config
-        mountPath: /config/rclone
-      - name: scripts
-        mountPath: /scripts
-        readOnly: true
       - mountPath: "/data"
         name: data
-    command: ["/bin/sh", "-c", "/scripts/run.bash"]
+
+  ingress:
+    enabled: false
 
 genuine-api:
   enabled: true
