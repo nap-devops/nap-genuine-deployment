@@ -21,8 +21,8 @@ dependencies:
     repository: "https://charts.visonneau.fr/"
     version: "0.0.14"
 
-  - name: "kube-rclone"
-    alias: rclone
-    condition: rclone.enabled
-    repository: "https://charts.simplyzee.dev"
-    version: "0.1.0"
+  - name: "generic-app"
+    alias: genuine-doc
+    condition: genuine-doc.enabled
+    repository: "https://charts.visonneau.fr/"
+    version: "0.0.14"

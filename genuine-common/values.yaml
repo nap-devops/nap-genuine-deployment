@@ -1,5 +1,30 @@
-rclone:
-  enabled: false
+genuine-doc:
+  enabled: true
+  nameOverride: genuine-doc
+  podDisruptionBudget:
+    enabled: false
+  pods:
+    controller: deployment
+    image:
+      name: rclone/rclone
+      tag: "1.62.2"
+    volumes:
+      - name: config
+        secret:
+          secretName: rclone-config
+          optional: false
+      - name: scripts
+        configMap:
+          name: rclone-script-cm
+          defaultMode: 0744
+    volumeMounts:
+      - name: config
+        mountPath: /config/rclone
+      - name: scripts
+        mountPath: /scripts
+        readOnly: true
+    command: ["bash"]
+    args: ["-c", "/scripts/run.bash"]
 
 genuine-api:
   enabled: true
