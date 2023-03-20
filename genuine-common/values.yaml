@@ -24,6 +24,9 @@ genuine-doc:
             readOnly: true
           - mountPath: "/data"
             name: data
+    env:
+      - name: DUMMY_ENV
+        value: "001"
     volumes:
       - name: config
         secret:

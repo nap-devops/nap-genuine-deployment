@@ -4,22 +4,26 @@ metadata:
   name: nginx-conf-cm
 data:
   nginx.conf: |
-    server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+    user nginx;
+    worker_processes  1;
 
-        root /usr/share/nginx/html;
-        index index.html index.htm;
+    events {
+      worker_connections  10240;
+    }
 
-        server_name _;
-
+    http {
+      server {
+        listen       80;
+        server_name  localhost;
         location / {
-          root /www;
+          root   /www; #Change this line
+          index  index.html index.htm;
         }
 
-      location /coa/ {
-          alias /data/;
-          autoindex on;
-          autoindex_format html;
+        location /coa/ {
+            alias /data/;
+            autoindex on;
+            autoindex_format html;
+        }
       }
     }
