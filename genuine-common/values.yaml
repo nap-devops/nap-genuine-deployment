@@ -4,6 +4,8 @@ genuine-doc:
   podDisruptionBudget:
     enabled: false
   pods:
+    strategy:
+      type: Recreate
     controller: deployment
     image:
       name: rclone/rclone
@@ -17,12 +19,17 @@ genuine-doc:
         configMap:
           name: rclone-script-cm
           defaultMode: 0744
+      - name: data
+        persistentVolumeClaim:
+          claimName: rclone-data
     volumeMounts:
       - name: config
         mountPath: /config/rclone
       - name: scripts
         mountPath: /scripts
         readOnly: true
+      - mountPath: "/data"
+        name: data
     command: ["/bin/sh", "-c", "/scripts/run.bash"]
 
 genuine-api:

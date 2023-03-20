@@ -6,6 +6,8 @@ data:
   run.bash: |
     #!/bin/sh
 
+    # May change to rclone sync instead
+
     while :
     do
       rclone copy GoogleDrive: /data/ -vvv
