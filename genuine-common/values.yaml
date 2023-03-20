@@ -10,6 +10,8 @@ genuine-doc:
     image:
       name: nginx
       tag: "1.14.2"
+    ports:
+      - containerPort: 80
     additionalContainers:
       - name: rclone
         image: rclone/rclone
