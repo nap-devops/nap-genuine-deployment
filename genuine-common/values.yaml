@@ -33,12 +33,22 @@ genuine-doc:
         configMap:
           name: rclone-script-cm
           defaultMode: 0744
+      - name: nginx-cfg
+        configMap:
+          name: nginx-conf-cm
+      - name: nginx-web
+        configMap:
+          name: nginx-web-cm
       - name: data
         persistentVolumeClaim:
           claimName: rclone-data
     volumeMounts:
       - mountPath: "/data"
         name: data
+      - mountPath: "/etc/nginx"
+        name: nginx-cfg
+      - mountPath: "/www"
+        name: nginx-web
 
   ingress:
     enabled: false
