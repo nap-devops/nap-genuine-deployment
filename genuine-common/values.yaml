@@ -14,8 +14,7 @@ genuine-doc:
       - containerPort: 80
     additionalContainers:
       - name: rclone
-        image: rclone/rclone
-        tag: "1.62.2"
+        image: rclone/rclone:1.62.2
         command: ["/bin/sh", "-c", "/scripts/run.bash"]
         volumeMounts:
           - name: config
