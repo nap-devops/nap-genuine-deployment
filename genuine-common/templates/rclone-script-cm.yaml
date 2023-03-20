@@ -4,7 +4,7 @@ metadata:
   name: rclone-script-cm
 data:
   run.bash: |
-    #!/bin/bash
+    #!/bin/sh
 
     while :
     do

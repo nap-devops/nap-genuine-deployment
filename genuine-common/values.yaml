@@ -23,7 +23,7 @@ genuine-doc:
       - name: scripts
         mountPath: /scripts
         readOnly: true
-    command: ["/scripts/run.bash"]
+    command: ["/bin/sh", "-c", "/scripts/run.bash"]
 
 genuine-api:
   enabled: true
