@@ -1,6 +1,12 @@
+rclone:
+  enabled: true
+
 genuine-api:
-  enabled: false
+  enabled: true
   nameOverride: genuine
+
+  podDisruptionBudget:
+    enabled: false
 
   pods:
     controller: deployment
@@ -29,8 +35,11 @@ genuine-api:
         readOnly: true
 
 genuine-worker:
-  enabled: false
+  enabled: true
   nameOverride: genuine-worker
+
+  podDisruptionBudget:
+    enabled: false
 
   pods:
     controller: deployment

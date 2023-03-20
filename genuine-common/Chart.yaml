@@ -17,6 +17,12 @@ dependencies:
 
   - name: "generic-app"
     alias: genuine-worker
-    condition: genuine-api.enabled
+    condition: genuine-worker.enabled
     repository: "https://charts.visonneau.fr/"
     version: "0.0.14"
+
+  - name: "kube-rclone"
+    alias: rclone
+    condition: rclone.enabled
+    repository: "https://charts.simplyzee.dev"
+    version: "0.1.0"
