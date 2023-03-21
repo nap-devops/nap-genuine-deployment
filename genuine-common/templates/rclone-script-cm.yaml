@@ -10,6 +10,7 @@ data:
 
     while :
     do
-      rclone copy GoogleDrive: /data/ -vvv
+      # Use webmaster@napbiotec.io token to login 
+      rclone copy GoogleDriveNAp: /data/napbiotec -vvv
       sleep 5m
     done
