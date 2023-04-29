@@ -47,4 +47,10 @@ genuine-api:
 
       - name: Pubsub__Topic
         value: "genuine-prod"
-        
+
+      - name: basicAuthen__keycloak__credentials__secret
+        valueFrom:
+          secretKeyRef:
+            name: keycloak-client-secret
+            key: KEYCLOAK_CLIENT_SECRET
+            optional: false
