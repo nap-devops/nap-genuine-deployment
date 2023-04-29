@@ -2,6 +2,9 @@ genuine-api:
   enabled: true
   nameOverride: genuine
 
+  podDisruptionBudget:
+    enabled: false
+
   pods:
     controller: deployment
     image:
@@ -31,6 +34,9 @@ genuine-api:
 genuine-worker:
   enabled: true
   nameOverride: genuine-worker
+
+  podDisruptionBudget:
+    enabled: false
 
   pods:
     controller: deployment
